@@ -52,7 +52,7 @@ def generate_data(n, seed):
     y = np.where(
         ((stress > 6) & (social_support < 6)) | (center_dist > 18), 1, 0
     )
-    noise_idx = rng.choice(n, size=max(1, n // 17), replace=False)
+    noise_idx = rng.choice(n, size=6, replace=False)
     y[noise_idx] = 1 - y[noise_idx]
     df = pd.DataFrame(
         {"Social Support Score": social_support, "Stress Level": stress, "Well-being Risk": y}
