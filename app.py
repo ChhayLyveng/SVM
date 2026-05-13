@@ -44,9 +44,9 @@ gamma_rbf = st.sidebar.selectbox("Gamma", ["scale", "auto"], index=0)
 # ── Data generation ───────────────────────────────────────────────────────────
 @st.cache_data
 def generate_data(n, seed):
-    rng = np.random.default_rng(seed)
-    social_support = rng.uniform(0, 10, n)
-    stress = rng.uniform(0, 10, n)
+    np.random.seed(seed)
+    social_support = np.random.uniform(0, 10, n)
+    stress = np.random.uniform(0, 10, n)
     X = np.column_stack((social_support, stress))
     center_dist = (social_support - 5) ** 2 + (stress - 5) ** 2
     y = np.where(
